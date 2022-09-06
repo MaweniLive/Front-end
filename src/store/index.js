@@ -16,16 +16,24 @@ export default createStore({
     },
   },
   actions: {
-  Getproducts: async (context)=>{
-   const res = await fetch("https://lj-capstone.herokuapp.com/products")
-                      .then(res => res.json())
-                      .then(products =>{
-                        console.log(products);
-                        context.commit("setProducts",products)
-                      })
-                      console.log(res);
-
-  }
+    Getproducts: async (context) => {
+      const res = await fetch("https://lj-capstone.herokuapp.com/products")
+        .then((res) => res.json())
+        .then((products) => {
+          console.log(products);
+          context.commit("setProducts", products);
+        });
+      console.log(res);
+    },
+    GetUsers: async (context) => {
+      const res = await fetch("https://lj-capstone.herokuapp.com/users")
+        .then((res) => res.json())
+        .then((usersdata) => {
+          console.log(usersdata);
+          context.commit("setUsers", usersdata);
+        });
+      console.log(res);
+    },
   },
   modules: {},
 });
