@@ -1,8 +1,10 @@
 <template>
-  <section>
-    <h1 class="display-head">Check Out Our Finest Properties</h1>
+  <section id="products-section">
+    <h1 class="display-head">See some of our most well-known artworks here.</h1>
     <p class="display-head">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit
+      The "Gallery of the Academy of Florence," also known as the Galleria
+      dell'Accademia di Firenze, is a museum of art in Florence, Italy. It is
+      best known for being the location of David .
     </p>
     <div class="container">
       <div class="row">
@@ -15,12 +17,12 @@
 export default {
   methods: {
     getproduct: fetch("https://lj-capstone.herokuapp.com/products")
-    .then((res) => res.json())
-    .then((data) =>  {
-      document.querySelector("#listings").innerHTML = "";
-      product.forEach((product, i) => {
-        document.querySelector("#listings").innerHTML += `
-      <div class="col">
+      .then((res) => res.json())
+      .then((data) => {
+        document.querySelector("#listings").innerHTML = "";
+        data.forEach((product, index) => {
+          document.querySelector("#listings").innerHTML += `
+      <div id="${index}" class="col">
                <div class="bucket">
                    <img
                    id="admin-img"
@@ -30,24 +32,22 @@ export default {
                    <div class="overlay">
                   <div class="text-product">
                       <h4>${product.name}</h4>
+                <p>${product.category}</p>
                 <p>${product.description}</p>
                 <div class="icons">
-                 <i class="fa-solid fa-money-bill">${product.price}</i>
-                <i class="fa-regular fa-screwdriver-wrench">${product.made}</i>
-                <i class="fa-light fa-arrow-down-short-wide">${product.quantity}</i>
                   </div>
               </div>
             </div>
          </div>
         `;
-      });
-    })
-    },
+        });
+      }),
+  },
 };
 </script>
 <style>
 * {
-  margin: 0;
+  margin-bottom: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -57,6 +57,9 @@ body {
 html,
 body {
   overflow-x: hidden;
+}
+#products-section {
+  padding-top: 100px;
 }
 .btn-nd {
   margin-left: 0%;
@@ -114,7 +117,7 @@ a {
 }
 #inquiry-form {
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-  url(https://i.postimg.cc/FsRv6f6S/julian-irigoyen-xeaq-Kvv-M2r-Q-unsplash.jpg);
+    url(https://i.postimg.cc/FsRv6f6S/julian-irigoyen-xeaq-Kvv-M2r-Q-unsplash.jpg);
   min-height: 100vh;
   background-position: center;
   background-size: cover;
@@ -240,7 +243,6 @@ form button {
   justify-content: center;
   flex-wrap: wrap;
   width: 400px;
-  /* height: 250px; */
   position: relative;
   margin: 10px;
 }
@@ -280,9 +282,10 @@ form button {
 }
 
 .text-product {
+  
   text-align: center;
   position: relative;
-  top: 100px;
+  top: 0;
   color: white;
   margin-top: 90px;
 }

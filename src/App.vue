@@ -5,8 +5,10 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img
-          src="https://i.postimg.cc/8kh2yY5M/Untitled-design-6-removebg-preview.png"
+          src="https://i.postimg.cc/GpdQhXpN/Untitled-design-8-removebg-preview.png"
           alt=""
+          width="130"
+          hieght="140"
           class="d-inline-block align-text-top"
           id="brand-galassia"
         />
@@ -53,9 +55,8 @@
 export default {};
 </script>
 <style>
-#brand-galassia{
-  width: 200px;
-  height: 220px;
+.navbar-nav{
+  margin-bottom: 10%;
 }
 /*START OF NAVBAR*/
 .navbar-brand {
