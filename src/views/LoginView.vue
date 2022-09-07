@@ -6,11 +6,19 @@
           <h2 class="modal-title">Login</h2>
           <form>
             <div class="user-box">
-              <input type="text" name="" required="" />
+              <input type="text"
+              id="fullname"
+              name="" 
+              v-model="user.fullname"
+              />
               <label>Email</label>
             </div>
             <div class="user-box">
-              <input type="password" name="" required="" />
+              <input type="password" 
+              id="password"
+              name="" 
+              v-model="user.password"
+              />
               <label>Password</label>
             </div>
             <a data-bs-dismiss="modal" href="#">

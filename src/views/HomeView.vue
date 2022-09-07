@@ -1,7 +1,7 @@
 <template>
   <div class="home" id="landing-img">
     <div class="skewed">
-      <HelloWorld msg="Welcome to Your Vue.js App" />
+  
     </div>
   </div>
 </template>

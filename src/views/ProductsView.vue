@@ -1,395 +1,347 @@
 <template>
-  <div class="container text-center">
-    <h1>Product card</h1>
-    <span
-      >Create With <i class="zmdi zmdi-favorite red"></i> By:
-      <strong>Deni Kurniawan</strong> From:
-      <i
-        ><a href="http://blog.wingerdstok.com" class="wsk-btn"
-          >Wingerdstok</a
-        ></i
-      ></span
-    >
-  </div>
-
-  <div class="shell">
+  <section>
+    <h1 class="display-head">Check Out Our Finest Properties</h1>
+    <p class="display-head">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit
+    </p>
     <div class="container">
-      <div class="row" v-for="product in products" :key="product.product_id">
-        <div class="col-md-3">
-          <div class="wsk-cp-product">
-            <div class="wsk-cp-img">
-              <img :src="product.imgURL" alt="Product" class="img-responsive" />
-            </div>
-            <div class="wsk-cp-text">
-              <div class="category">
-                <span>{{ product.category }}</span>
-              </div>
-              <div class="title-product">
-                <h3>{{ product.name }}</h3>
-              </div>
-              <div class="description-prod">
-                <p>
-                  {{ product.description }}
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="wcf-left"><span class="price">{{product.price}}</span></div>
-                <div class="wcf-right">
-                  <a href="#" class="buy-btn"
-                    ><i class="zmdi zmdi-shopping-basket"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="wsk-cp-product">
-            <div class="wsk-cp-img">
-              <img
-                :src="product.imgURL"
-                alt="Product"
-                class="img-responsive"
-              />
-            </div>
-            <div class="wsk-cp-text">
-              <div class="category">
-                <span>{{product.category}}</span>
-              </div>
-              <div class="title-product">
-                <h3>{{product.name}}</h3>
-              </div>
-              <div class="description-prod">
-                <p>
-                 {{product.description}}
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="wcf-left"><span class="price">{{product.price}}</span></div>
-                <div class="wcf-right">
-                  <a href="#" class="buy-btn"
-                    ><i class="zmdi zmdi-shopping-basket"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="wsk-cp-product">
-            <div class="wsk-cp-img">
-              <img
-                :src="product.imgURL"
-                alt="Product"
-                class="img-responsive"
-              />
-            </div>
-            <div class="wsk-cp-text">
-              <div class="category">
-                <span>{{product.category}}</span>
-              </div>
-              <div class="title-product">
-                <h3>{{product.name}}</h3>
-              </div>
-              <div class="description-prod">
-                <p>
-                  {{product.description}}
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="wcf-left"><span class="price">Rp500.000</span></div>
-                <div class="wcf-right">
-                  <a href="#" class="buy-btn"
-                    ><i class="zmdi zmdi-shopping-basket"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       <div class="row">
-        <div class="col-md-6">
-          <div class="wsk-cp-product">
-            <div class="wsk-cp-img">
-              <img
-                :src="product.imgURL"
-                alt="Product"
-                class="img-responsive"
-              />
-            </div>
-            <div class="wsk-cp-text">
-              <div class="category">
-                <span>{{product.category}}</span>
-              </div>
-              <div class="title-product">
-                <h3>{{product.name}}</h3>
-              </div>
-              <div class="description-prod">
-                <p>
-                 {{product.description}}
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="wcf-left"><span class="price">{{product.price}}</span></div>
-                <div class="wcf-right">
-                  <a href="#" class="buy-btn"
-                    ><i class="zmdi zmdi-shopping-basket"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="wsk-cp-product">
-            <div class="wsk-cp-img">
-              <img
-                :src="product.imgURL"
-                alt="Product"
-                class="img-responsive"
-              />
-            </div>
-            <div class="wsk-cp-text">
-              <div class="category">
-                <span>{{product.category}}</span>
-              </div>
-              <div class="title-product">
-                <h3>{{product.name}}</h3>
-              </div>
-              <div class="description-prod">
-                <p>
-                 {{product.description}}
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="wcf-left"><span class="price">{{product.price}}</span></div>
-                <div class="wcf-right">
-                  <a href="#" class="buy-btn"
-                    ><i class="zmdi zmdi-shopping-basket"></i
-                  ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="listings" class="listings"></div>
       </div>
     </div>
-  </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {
-  mounted() {
-    this.$store.dispatch("Getproducts");
-  },
-  computed: {
-    products() {
-      return this.$store.state.products;
+  methods: {
+    getproduct: fetch("https://lj-capstone.herokuapp.com/products")
+    .then((res) => res.json())
+    .then((data) =>  {
+      document.querySelector("#listings").innerHTML = "";
+      product.forEach((product, i) => {
+        document.querySelector("#listings").innerHTML += `
+      <div class="col">
+               <div class="bucket">
+                   <img
+                   id="admin-img"
+                   class="proj_img"
+                   src="${product.imgURL}"
+                   />
+                   <div class="overlay">
+                  <div class="text-product">
+                      <h4>${product.name}</h4>
+                <p>${product.description}</p>
+                <div class="icons">
+                 <i class="fa-solid fa-money-bill">${product.price}</i>
+                <i class="fa-regular fa-screwdriver-wrench">${product.made}</i>
+                <i class="fa-light fa-arrow-down-short-wide">${product.quantity}</i>
+                  </div>
+              </div>
+            </div>
+         </div>
+        `;
+      });
+    })
     },
-  },
 };
 </script>
-<style scoped>
-@import url("https://fonts.googleapis.com/css?family=Nunito+Sans|Playfair+Display:400,400i,700,700i,900,900i");
-
-body {
-  font-family: "Nunito", sans-serif;
-  background: #ddd;
-}
-.shell {
-  padding: 80px 0;
-}
-.wsk-cp-product {
-  background: #fff;
-  padding: 15px;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  position: relative;
-  margin: 20px auto;
-}
-.wsk-cp-img {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translate(-50%);
-  -webkit-transform: translate(-50%);
-  -ms-transform: translate(-50%);
-  -moz-transform: translate(-50%);
-  -o-transform: translate(-50%);
-  -khtml-transform: translate(-50%);
-  width: 100%;
-  padding: 15px;
-  transition: all 0.2s ease-in-out;
-}
-.wsk-cp-img img {
-  width: 100%;
-  transition: all 0.2s ease-in-out;
-  border-radius: 6px;
-}
-.wsk-cp-product:hover .wsk-cp-img {
-  top: -40px;
-}
-.wsk-cp-product:hover .wsk-cp-img img {
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-}
-.wsk-cp-text {
-  padding-top: 150%;
-}
-.wsk-cp-text .category {
-  text-align: center;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 5px;
-  margin-bottom: 45px;
-  position: relative;
-  transition: all 0.2s ease-in-out;
-}
-.wsk-cp-text .category > * {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -khtml-transform: translate(-50%, -50%);
-}
-.wsk-cp-text .category > span {
-  padding: 12px 30px;
-  border: 1px solid #313131;
-  background: #212121;
-  color: #fff;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  border-radius: 27px;
-  transition: all 0.05s ease-in-out;
-}
-.wsk-cp-product:hover .wsk-cp-text .category > span {
-  border-color: #ddd;
-  box-shadow: none;
-  padding: 11px 28px;
-}
-.wsk-cp-product:hover .wsk-cp-text .category {
-  margin-top: 0px;
-}
-.wsk-cp-text .title-product {
-  text-align: center;
-}
-.wsk-cp-text .title-product h3 {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 15px auto;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  width: 100%;
-}
-.wsk-cp-text .description-prod p {
+<style>
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-/* Truncate */
-.wsk-cp-text .description-prod {
-  text-align: center;
-  width: 100%;
-  height: 62px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  margin-bottom: 15px;
+body {
+  background-color: #030e17;
 }
-.card-footer {
-  padding: 25px 0 5px;
-  border-top: 1px solid #ddd;
+html,
+body {
+  overflow-x: hidden;
 }
-.card-footer:after,
-.card-footer:before {
-  content: "";
+.btn-nd {
+  margin-left: 0%;
+}
+#btn-nd {
+  margin-left: 0%;
+}
+.icons i {
+  margin: 8px;
+}
+.btn:hover {
+  color: rgb(0, 0, 0);
+}
+a:hover {
+  color: black;
+}
+.icons p {
+  font-size: 12px;
+  margin: 8px;
+}
+.icons {
+  display: flex;
+  flex-wrap: nowrap;
+}
+#admin-img {
+  width: 20rem;
+}
+a {
+  /* color: var(--bs-link-color); */
+  text-decoration: none;
+  color: white;
+}
+.admin-btn {
+  margin-top: 20px;
+}
+#Landing {
+  background: linear-gradient(#0000009f, #000000b0),
+    url(https://i.postimg.cc/nzcBmYdr/mk-s-U74-Ol-S8-ANGI-unsplash.jpg);
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
   display: table;
+  justify-content: center;
+  color: white;
+  overflow-x: hidden;
+  text-align: center;
 }
-.card-footer:after {
-  clear: both;
+.l-display {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 30px;
+}
+.landing-head {
+  font-family: auto;
+}
+#inquiry-form {
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+  url(https://i.postimg.cc/FsRv6f6S/julian-irigoyen-xeaq-Kvv-M2r-Q-unsplash.jpg);
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+footer {
+  background-color: #071621;
+  color: white;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.footer {
+  background-color: #000304;
+  height: 150px;
+  display: table;
+  width: 100%;
+}
+/* #discover {
+  min-height: 100vh;
+} */
+#card {
+  margin-left: 10%;
+  margin-right: 2rem;
+  width: 80%;
+  height: 10rem;
+  margin-top: -4rem;
+  background-color: #081b2b;
+  color: white;
+  margin-bottom: 2rem;
+}
+#card-content {
+  opacity: 1;
+}
+#search-button {
+  width: 5rem;
+}
+.btn-conatiner {
+  display: flex;
+  justify-content: center;
+}
+#card {
+  margin-left: 10%;
+  margin-right: 2rem;
+  width: 80%;
+  height: 10rem;
+  margin-top: -4rem;
+}
+#card-content {
+  opacity: 1;
+}
+#search-button {
+  width: 5rem;
+}
+.btn-conatiner {
+  display: flex;
+  justify-content: center;
+}
+form input {
+  width: 100%;
+  height: 45px;
+  border-radius: 0.25rem;
+  border: none;
+  padding-left: 10px;
+}
+form button {
+  background-color: #00aeff;
+  border-color: #00aeff;
+  color: white;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: 50px;
+}
+.row {
+  --bs-gutter-x: 0rem !important;
+}
+.fter .row {
+  text-align: center;
+}
+.fter {
+  display: table-cell;
+  vertical-align: middle;
+}
+.in-contact {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.in-contact p {
+  font-size: 15px;
+  padding-left: 20px;
+}
+.futer {
+  padding: 80px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.futer h5 {
+  padding-bottom: 30px;
+}
+.big {
+  font-size: 30px;
+}
+.socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 20px;
+  padding-right: 50px;
+}
+.copyright {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 20px;
+  padding-right: 80px;
 }
 
-.card-footer .wcf-left {
-  float: left;
+.bucket {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 400px;
+  /* height: 250px; */
+  position: relative;
+  margin: 10px;
 }
-
-.card-footer .wcf-right {
-  float: right;
-}
-
-.price {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-a.buy-btn {
+.proj_img {
   display: block;
-  color: #212121;
+  width: 25rem !important;
+  height: 20rem;
+  object-fit: cover;
+  border: 6px solid white;
+  border-radius: 6px;
+  /* box-shadow: 8px 8px 15px #e4e4e4; */
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20rem;
+  width: 25rem;
+  /* opacity: 0.2; */
+  transition: 0.3s ease;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
+  color: #03111c;
+}
+.bucket:hover .overlay {
+  opacity: 0.1;
+  /* border-bottom: 1px solid #000; */
+}
+.listings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 30px;
+}
+
+.text-product {
   text-align: center;
-  font-size: 18px;
-  width: 35px;
-  height: 35px;
-  line-height: 35px;
-  border-radius: 50%;
-  border: 1px solid #212121;
-  transition: all 0.2s ease-in-out;
+  position: relative;
+  top: 100px;
+  color: white;
+  margin-top: 90px;
 }
-a.buy-btn:hover,
-a.buy-btn:active,
-a.buy-btn:focus {
-  border-color: #ff9800;
-  background: #ff9800;
-  color: #fff;
-  text-decoration: none;
+.sorting {
+  display: flex;
+  border-radius: 50px;
+  width: 6rem;
 }
-.wsk-btn {
-  display: inline-block;
-  color: #212121;
+tbody#admin-listings {
+  color: white;
+}
+td:hover {
+  color: white;
+}
+.display-head {
+  font-family: auto;
+  color: white;
   text-align: center;
-  font-size: 18px;
-  transition: all 0.2s ease-in-out;
-  border-color: #ff9800;
-  background: #ff9800;
-  padding: 12px 30px;
-  border-radius: 27px;
-  margin: 0 5px;
 }
-.wsk-btn:hover,
-.wsk-btn:focus,
-.wsk-btn:active {
-  text-decoration: none;
-  color: #fff;
+.socials i:hover {
+  color: #004274;
 }
-.red {
-  color: #f44336;
-  font-size: 22px;
-  display: inline-block;
-  margin: 0 5px;
+@media only screen and (max-width: 1000px) {
+  #card {
+    height: fit-content;
+  }
+  body {
+    background-color: #071825;
+    /* padding-left: 10px;
+    padding-right: 10px; */
+  }
+  .socials {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 20px;
+    padding-right: 88px;
+  }
+  .admin-btn {
+    margin-top: 20px;
+    padding-left: 56px;
+  }
+  tr {
+    display: flex;
+    flex-direction: column;
+  }
 }
-@media screen and (max-width: 991px) {
-  .wsk-cp-product {
-    margin: 40px auto;
-  }
-  .wsk-cp-product .wsk-cp-img {
-    top: -40px;
-  }
-  .wsk-cp-product .wsk-cp-img img {
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  }
-  .wsk-cp-product .wsk-cp-text .category > span {
-    border-color: #ddd;
-    box-shadow: none;
-    padding: 11px 28px;
-  }
-  .wsk-cp-product .wsk-cp-text .category {
-    margin-top: 0px;
-  }
-  a.buy-btn {
-    border-color: #ff9800;
-    background: #ff9800;
-    color: #fff;
-  }
+.card-admin {
+  margin-left: 10%;
+  margin-right: 2rem;
+  width: 80%;
+  height: 10rem;
+  margin-top: -4rem;
+  background-color: #04131e;
+  color: white;
+  margin-bottom: 2rem;
+}
+div#card-content {
+  background-color: #030f18;
+  color: white;
 }
 </style>

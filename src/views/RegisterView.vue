@@ -1,21 +1,27 @@
 <template>
-  <div class="login-box" tabindex="-1" aria-labelledby="registerModal" aria-hidden="true" id="exampleModal">
+  <div
+    class="login-box"
+    tabindex="-1"
+    aria-labelledby="registerModal"
+    aria-hidden="true"
+    id="exampleModal"
+  >
     <h2>Register</h2>
-    <form>
+    <form @submit="register" method="post" class="mt-5 d-flex">
       <div class="user-box">
-        <input type="text" name="" required="" />
+        <input type="text" id="fullname" v-model="user.fullname" name="" />
         <label>Fullname</label>
       </div>
       <div class="user-box">
-        <input type="text" name="" required="" />
+        <input type="text" id="email" v-model="user.email" name="" />
         <label>Email</label>
       </div>
       <div class="user-box">
-        <input type="password" name="" required="" />
+        <input type="password" id="password" v-model="user.password" name="" />
         <label>Password</label>
       </div>
       <div class="user-box">
-        <input type="password" name="" required="" />
+        <input type="phone" id="phone" v-model="user.phone" name="" />
         <label>Phone</label>
       </div>
       <a href="#">
@@ -30,7 +36,36 @@
 </template>
 <script>
 export default {
-
+  data() {
+    return {
+      user: {
+        fullname: null,
+        email: null,
+        password: null,
+        userRole: "customer",
+      },
+    }
+  },
+  methods: {
+    register(e) {
+      console.warn(this.user);
+      fetch("https://lj-capstone.herokuapp.com/users", {
+        method: "POST",
+        body: JSON.stringify({
+          fullname: this.user.fullname,
+          email: this.user.email,
+          password: this.user.password,
+          userRole: this.user.userRole,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+      e.preventDefault();
+    },
+  },
 };
 </script>
 <style>
