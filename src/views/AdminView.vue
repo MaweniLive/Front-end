@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
       <div class="head">
         <h2>Users</h2>
       </div>
@@ -19,8 +19,7 @@
         </table>
       </div>
     </div>
-    <div class="col-lg-6">
-      <div class="col-lg-6">
+    <div class="col-lg-12">
         <div class="head">
           <h2>Products</h2>
         </div>
@@ -40,7 +39,6 @@
             </thead>
           </table>
         </div>
-      </div>
     </div>
   </div>
 </template>

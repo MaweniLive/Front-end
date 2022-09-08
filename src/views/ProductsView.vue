@@ -1,7 +1,7 @@
 <template>
   <section id="products-section">
     <h1 class="display-head">See some of our most well-known artworks here.</h1>
-    <p class="display-head">
+    <p class="display-head1">
       The "Gallery of the Academy of Florence," also known as the Galleria
       dell'Accademia di Firenze, is a museum of art in Florence, Italy. It is
       best known for being the location of David .

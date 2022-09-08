@@ -45,6 +45,12 @@
           <li class="nav-item">
             <router-link class="nav-link mx-2" to="/admin">Admin</router-link>
           </li>
+          <li class="nav-item">
+            <router-link type="button" class="btn btn-primary rounded-pill">Primary</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link type="button" class="btn btn-primary rounded-pill">Primary</router-link>
+          </li>
         </ul>
       </div>
     </div>
@@ -55,7 +61,7 @@
 export default {};
 </script>
 <style>
-.navbar-nav{
+.navbar-nav {
   margin-bottom: 10%;
 }
 /*START OF NAVBAR*/

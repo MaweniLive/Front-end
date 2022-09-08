@@ -1,23 +1,32 @@
 <template>
   <div class="container">
     <div class="row">
+      <div></div>
+      <img
+        id="postcard"
+        src="https://i.postimg.cc/x8wCVMJ5/birmingham-museums-trust-t-V02-AFxv-RJg-unsplash.jpg"
+        alt="postcard"
+        class="img-responsive move"
+      />
       <div class="col-lg-6">
         <div class="login-box">
           <h2 class="modal-title">Login</h2>
           <form>
             <div class="user-box">
-              <input type="text"
-              id="fullname"
-              name="" 
-              v-model="user.fullname"
+              <input
+                type="text"
+                id="fullname"
+                name=""
+                v-model="user.fullname"
               />
               <label>Email</label>
             </div>
             <div class="user-box">
-              <input type="password" 
-              id="password"
-              name="" 
-              v-model="user.password"
+              <input
+                type="password"
+                id="password"
+                name=""
+                v-model="user.password"
               />
               <label>Password</label>
             </div>
@@ -134,6 +143,13 @@ body {
   height: 2px;
   background: linear-gradient(90deg, transparent, #03e9f4);
   animation: btn-anim1 1s linear infinite;
+}
+#postcard {
+  z-index: 102;
+  margin: 50px auto;
+  position: absolute;
+  transform: scale(1.2) rotate(30deg);
+  left: 650px;
 }
 
 @keyframes btn-anim1 {
