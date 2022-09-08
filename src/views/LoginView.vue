@@ -1,13 +1,6 @@
 <template>
   <div class="container">
     <div class="row">
-      <div></div>
-      <img
-        id="postcard"
-        src="https://i.postimg.cc/x8wCVMJ5/birmingham-museums-trust-t-V02-AFxv-RJg-unsplash.jpg"
-        alt="postcard"
-        class="img-responsive move"
-      />
       <div class="col-lg-6">
         <div class="login-box">
           <h2 class="modal-title">Login</h2>
@@ -45,15 +38,35 @@
 </template>
 <script>
 export default {
-  name: "LoginView",
+  data() {
+    return {
+      user: {
+        email: null,
+        password: null,
+      },
+    };
+  },
+  methods: {
+    login(e) {
+      console.warn(this.user);
+      fetch("https://lj-capstone.herokuapp.com/users", {
+        method: "POST",
+        body: JSON.stringify({
+          email: this.user.email,
+          password: this.user.password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+      e.preventDefault();
+    },
+  },
 };
 </script>
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
 
 .login-box {
   position: absolute;
@@ -143,13 +156,6 @@ body {
   height: 2px;
   background: linear-gradient(90deg, transparent, #03e9f4);
   animation: btn-anim1 1s linear infinite;
-}
-#postcard {
-  z-index: 102;
-  margin: 50px auto;
-  position: absolute;
-  transform: scale(1.2) rotate(30deg);
-  left: 650px;
 }
 
 @keyframes btn-anim1 {

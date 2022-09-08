@@ -45,11 +45,21 @@
           <li class="nav-item">
             <router-link class="nav-link mx-2" to="/admin">Admin</router-link>
           </li>
-          <li class="nav-item">
-            <router-link type="button" class="btn btn-primary rounded-pill">Primary</router-link>
+          <li class="nav-item-2">
+            <router-link
+              type="button"
+              class="btn btn-primary rounded-pill"
+              to="/login"
+              >Login</router-link
+            >
           </li>
-          <li class="nav-item">
-            <router-link type="button" class="btn btn-primary rounded-pill">Primary</router-link>
+          <li class="nav-item-2">
+            <router-link
+              type="button"
+              class="btn btn-primary rounded-pill"
+              to="/register"
+              >Register</router-link
+            >
           </li>
         </ul>
       </div>
@@ -61,8 +71,16 @@
 export default {};
 </script>
 <style>
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans|Playfair+Display:400,400i,700,700i,900,900i");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Playfair Display";
+}
 .navbar-nav {
   margin-bottom: 10%;
+  gap: 20px;
 }
 /*START OF NAVBAR*/
 .navbar-brand {
@@ -72,6 +90,10 @@ export default {};
 }
 .nav-item {
   font-size: 20px;
+}
+.nav-item-2 {
+  font-size: 20px;
+  gap: 20px;
 }
 router-link:hover {
   color: #000;

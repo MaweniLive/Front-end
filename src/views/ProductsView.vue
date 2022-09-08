@@ -1,10 +1,9 @@
 <template>
   <section id="products-section">
     <h1 class="display-head">See some of our most well-known artworks here.</h1>
-    <p class="display-head1">
-      The "Gallery of the Academy of Florence," also known as the Galleria
-      dell'Accademia di Firenze, is a museum of art in Florence, Italy. It is
-      best known for being the location of David .
+    <p class="display-head1 d-flex justify-content-center">
+      The "Gallery of the Academy of Florence," <p class="d-flex justify-content-center">also known as the Galleria
+      dell'Accademia di Firenze, is a museum of art in Florence, Italy.</p>
     </p>
     <div class="container">
       <div class="row">
@@ -12,6 +11,43 @@
       </div>
     </div>
   </section>
+  <div id="app" class="footer">
+    <v-app id="inspire">
+      <v-footer dark padless>
+        <v-card flat tile class="indigo lighten-1 white--text text-center">
+          <v-card-text>
+            <v-btn
+              v-for="icon in icons"
+              :key="icon"
+              class="mx-4 white--text"
+              icon
+            >
+              <v-icon size="24px">
+                {{ icon }}
+              </v-icon>
+            </v-btn>
+          </v-card-text>
+
+          <v-card-text class="white--text pt-0">
+            Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
+            Mauris cursus commodo interdum. Praesent ut risus eget metus luctus
+            accumsan id ultrices nunc. Sed at orci sed massa consectetur
+            dignissim a sit amet dui. Duis commodo vitae velit et faucibus.
+            Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum
+            ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel
+            diam elementum tempor vel ut orci. Orci varius natoque penatibus et
+            magnis dis parturient montes, nascetur ridiculus mus.
+          </v-card-text>
+
+          <v-divider></v-divider>
+
+          <v-card-text class="white--text">
+            {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+          </v-card-text>
+        </v-card>
+      </v-footer>
+    </v-app>
+  </div>
 </template>
 <script>
 export default {
@@ -34,6 +70,13 @@ export default {
                       <h4>${product.name}</h4>
                 <p>${product.category}</p>
                 <p>${product.description}</p>
+                <ul class="icons">
+                  <li>
+                    <i class="fa-solid fa-arrow-down-wide-short">:${product.quantity}</i>
+                    <span></span><span></span><span></span><span></span>
+                    <i class="fa-sharp fa-solid fa-screwdriver-wrench">:${product.made}</i>
+                    </li>
+                  </ul>
                 <div class="icons">
                   </div>
               </div>
@@ -46,6 +89,13 @@ export default {
 };
 </script>
 <style>
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans|Playfair+Display:400,400i,700,700i,900,900i");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Playfair Display";
+}
 * {
   margin-bottom: 0;
   padding: 0;
@@ -59,7 +109,7 @@ body {
   overflow-x: hidden;
 }
 #products-section {
-  padding-top: 100px;
+  padding-top: 120px;
 }
 .btn-nd {
   margin-left: 0%;
@@ -83,9 +133,14 @@ a:hover {
 .icons {
   display: flex;
   flex-wrap: nowrap;
+  object-fit: contain;
 }
 #admin-img {
   width: 20rem;
+}
+ul{
+  list-style-type: none;
+  object-fit: fill ;
 }
 a {
   /* color: var(--bs-link-color); */
@@ -97,7 +152,7 @@ a {
 }
 #Landing {
   background: linear-gradient(#0000009f, #000000b0),
-    url(https://i.postimg.cc/nzcBmYdr/mk-s-U74-Ol-S8-ANGI-unsplash.jpg);
+  url(https://i.postimg.cc/nzcBmYdr/mk-s-U74-Ol-S8-ANGI-unsplash.jpg);
   min-height: 100vh;
   background-position: center;
   background-size: cover;
@@ -123,7 +178,7 @@ a {
   background-size: cover;
 }
 footer {
-  background-color: #071621;
+  background-color: black;
   color: white;
 }
 .contact {
@@ -170,31 +225,10 @@ footer {
 #card-content {
   opacity: 1;
 }
-#search-button {
-  width: 5rem;
-}
-.btn-conatiner {
-  display: flex;
-  justify-content: center;
-}
-form input {
-  width: 100%;
-  height: 45px;
-  border-radius: 0.25rem;
-  border: none;
-  padding-left: 10px;
-}
-form button {
-  background-color: #00aeff;
-  border-color: #00aeff;
-  color: white;
-  border-radius: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  margin-left: 50px;
-}
+
+
+
+
 .row {
   --bs-gutter-x: 0rem !important;
 }
@@ -205,14 +239,7 @@ form button {
   display: table-cell;
   vertical-align: middle;
 }
-.in-contact {
-  display: flex;
-  flex-wrap: nowrap;
-}
-.in-contact p {
-  font-size: 15px;
-  padding-left: 20px;
-}
+
 .futer {
   padding: 80px;
   padding-top: 70px;
@@ -282,7 +309,6 @@ form button {
 }
 
 .text-product {
-  
   text-align: center;
   position: relative;
   top: 0;
@@ -302,7 +328,7 @@ td:hover {
 }
 .display-head {
   font-family: auto;
-  color: white;
+  color: white !important;
   text-align: center;
 }
 .socials i:hover {

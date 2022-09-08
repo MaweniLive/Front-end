@@ -2,7 +2,7 @@
   <section id="Landing">
     <div class="l-display">
       <h1 class="landing-head">GALASSIA MODA</h1>
-      <h3 class="landing-head2">
+      <h3 class="landing-head1">
         For admirers of the Renaissance, the Uffizi Gallery is among Florence,
         Italy's greatest art museums. You really must see the Uffizi Gallery
         while you are in Italy.
@@ -39,7 +39,7 @@ body {
 }
 #Landing {
   background: linear-gradient(#0000009f, #000000b0),
-    url(https://i.postimg.cc/nzcBmYdr/mk-s-U74-Ol-S8-ANGI-unsplash.jpg);
+  url(https://i.postimg.cc/nzcBmYdr/mk-s-U74-Ol-S8-ANGI-unsplash.jpg);
   min-height: 100vh;
   background-position: center;
   background-size: cover;
@@ -55,14 +55,14 @@ body {
   padding: 0 30px;
 }
 .landing-head {
-  font-family: auto;
+  font-family: "Playfair Display";
   background: linear-gradient(to right, hsl(98 100% 62%), hsl(204 100% 59%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
 }
-.laning-head1{
-  font-family: auto;
+.laning-head1 {
+  font-family: "Playfair Display";
   text-align: center;
 }
 #inquiry-form {
