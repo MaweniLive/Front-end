@@ -7,24 +7,24 @@
     id="exampleModal"
   >
     <h2>Register</h2>
-    <form @submit="register" method="post" class="mt-5">
+    <form onsubmit="Register(event)" method="post" class="mt-5">
       <div class="user-box">
-        <input type="text" id="fullname" v-model="user.fullname" name="" />
+        <input type="text" id="fullname" v-model="fullname" name="" />
         <label>Fullname</label>
       </div>
       <div class="user-box">
-        <input type="text" id="email" v-model="user.email" name="" />
+        <input type="text" id="email" v-model="email" name="" />
         <label>Email</label>
       </div>
       <div class="user-box">
-        <input type="password" id="password" v-model="user.password" name="" />
+        <input type="password" id="password" v-model="password" name="" />
         <label>Password</label>
       </div>
       <div class="user-box">
-        <input type="phone" id="phone" v-model="user.phone" name="" />
+        <input type="phone" id="phone" v-model="phone" name="" />
         <label>Phone</label>
       </div>
-      <a href="#">
+      <a href="#" @click.capture="Register()">
         <span></span>
         <span></span>
         <span></span>
@@ -36,34 +36,32 @@
 </template>
 <script>
 export default {
+  props: ["user.user_id"],
+
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+  },
+
   data() {
     return {
-      user: {
-        fullname: null,
-        email: null,
-        password: null,
-        userRole: "customer",
-      },
-    }
+      fullname: null,
+      email: null,
+      password: null,
+      phone: null,
+      userRole: "customer",
+    };
   },
   methods: {
-    register(e) {
-      console.warn(this.user);
-      fetch("https://lj-capstone.herokuapp.com/users", {
-        method: "POST",
-        body: JSON.stringify({
-          fullname: this.user.fullname,
-          email: this.user.email,
-          password: this.user.password,
-          userRole: this.user.userRole,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-      e.preventDefault();
+    Register() {
+      this.$store.dispatch("Register", {
+        fullname: this.fullname,
+        email: this.email,
+        password: this.password,
+        phone: this.phone,
+        userRole: this.userRole,
+      });
     },
   },
 };

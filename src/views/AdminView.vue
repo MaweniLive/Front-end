@@ -1,5 +1,8 @@
 <template>
   <div class="row" id="admin">
+    <div class="title d-flex justify-content-center">
+      <h2 class="admin-title">Welcome to our admin page</h2>
+    </div>
     <div class="col-lg-12">
       <div class="head d-flex justify-content-center">
         <h2>Users</h2>
@@ -57,6 +60,7 @@ export default {
         document.querySelector("#products").innerHTML = "";
         data.forEach((product, index) => {
           document.querySelector("#products").innerHTML += `
+          <tbody>
               <tr id="${index}">
                 <th scope="row">${product.product_id}</th>
                 <td>${product.name}</td>
@@ -66,90 +70,17 @@ export default {
                 <td>${product.made}</td>
                 <td>${product.quantity}</td>
                 <td>R${product.price}</td>
-                <td> 
-                  <button onclick="deleteListings(${i})" 
-                  class="btn btn-primary admin-btn">
-                  delete
-                  </buttonn>
-                  <button
-          type="button"
-          class="btn btn-primary admin-btn"
-          data-bs-toggle="modal"
-          data-bs-target="#edit${i}"
-        >
-          Edit
-        </button></td>
-        <div
-             class="modal fade"
-             id="edit${i}"
-             tabindex="-1"
-             aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="">Edit Product</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
- 
-         <input type="text" placeholder="Enter name" id="name-${i}" value="${product.name}" />
-              <input type="text" placeholder="Enter size" id="category-${i}" value="${product.category}"/>
-              <input type="text" placeholder="Enter Address" id="description-${i}"value="${product.description}" />
-              <input
-                type="text"
-                placeholder="Enter bathroom amount"
-                id="made-${i}"
-                value="${product.made}"
-              />
-              <input
-                type="text"
-                placeholder="Enter parking space"
-                id="quantity-${i}"
-                value="${product.quantity}"
-              />
-              <input type="text" placeholder="Enter img url" id="imgURL-${i}" value="${product.imgURL}" />
-              <select name="propertySort" id="price-${i}" value="${product.price}">
-                <option value="Apartment">${product.price}</option>
-              </select>
-              <select name="LocationSort" id="LocationSort-${i}" value="${listings.locations}">
-                <option value="New York">New York</option>
-              </select>
-              <select name="bedroomsSort" id="bedroomsSort-${i}" value="${listings.bedrooms}">
-                <option value="1">1</option>
-              </select>
-              <select name="priceSort" id="priceSort-${i}" value="${listings.price}">
-                <option value="R1,600/mo">R1,600/mo</option>    
-              </select>
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-        >
-          Cancel
-        </button>
-        <button
-        data-bs-toggle="modal"
-        data-bs-target="#edit${i}"
-          type="button"
-          class="btn btn-primary"
-          onclick="editProperties(${i})"
-        >
-          Save changes
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+                <td><button type="btn" class="btn btn-primary rounded-pill">
+                  Update
+                  </button>
+                </td>
+                <td>
+                 <button type="btn" class="btn btn-primary rounded-pill" @click={deleteProduct(product.product_id)}>
+                  Delete
+                  </button>
+                  </td>
                 </tr>
+            </tbody>
           `;
         });
       }),
@@ -169,9 +100,9 @@ export default {
                 <td>${user.userRole}</td>
                 <td><button type="button" class="btn btn-primary">Update</button></td>
                 <td><button type="button" class="btn btn-primary">Delete</button></td>
-                 </tr>
-            </tbody>
-          `;
+                </tr>
+         </tbody>
+                `;
         });
       }),
   },
@@ -179,10 +110,18 @@ export default {
 </script>
 <style>
 #admin {
-  padding-top: 12%;
-  margin: 2%;
+  padding-top: 3%;
+  margin: 7%;
 }
 .head {
   color: antiquewhite;
+}
+.admin-title {
+  font-size: 50px;
+  color: rgba(234, 240, 246, 0.8);
+  text-align: center;
+  filter: blur(0.1rem);
+  transform: scale(calc(1 / var(--blur)), 1000);
+  text-decoration: line-through;
 }
 </style>

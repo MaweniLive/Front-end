@@ -2,8 +2,9 @@
   <section id="products-section">
     <h1 class="display-head">See some of our most well-known artworks here.</h1>
     <p class="display-head1 d-flex justify-content-center">
-      The "Gallery of the Academy of Florence," <p class="d-flex justify-content-center">also known as the Galleria
-      dell'Accademia di Firenze, is a museum of art in Florence, Italy.</p>
+      The "Gallery of the Academy of Florence," <p class="d-flex justify-content-center" id="span">also known as the Galleria
+      dell'Accademia di Firenze, is a museum of art in Florence, Italy.
+      </p>
     </p>
     <div class="container">
       <div class="row">
@@ -11,46 +12,11 @@
       </div>
     </div>
   </section>
-  <div id="app" class="footer">
-    <v-app id="inspire">
-      <v-footer dark padless>
-        <v-card flat tile class="indigo lighten-1 white--text text-center">
-          <v-card-text>
-            <v-btn
-              v-for="icon in icons"
-              :key="icon"
-              class="mx-4 white--text"
-              icon
-            >
-              <v-icon size="24px">
-                {{ icon }}
-              </v-icon>
-            </v-btn>
-          </v-card-text>
-
-          <v-card-text class="white--text pt-0">
-            Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
-            Mauris cursus commodo interdum. Praesent ut risus eget metus luctus
-            accumsan id ultrices nunc. Sed at orci sed massa consectetur
-            dignissim a sit amet dui. Duis commodo vitae velit et faucibus.
-            Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum
-            ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel
-            diam elementum tempor vel ut orci. Orci varius natoque penatibus et
-            magnis dis parturient montes, nascetur ridiculus mus.
-          </v-card-text>
-
-          <v-divider></v-divider>
-
-          <v-card-text class="white--text">
-            {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
-          </v-card-text>
-        </v-card>
-      </v-footer>
-    </v-app>
-  </div>
 </template>
 <script>
 export default {
+  props: ["program_id"],
+
   methods: {
     getproduct: fetch("https://lj-capstone.herokuapp.com/products")
       .then((res) => res.json())
@@ -72,9 +38,10 @@ export default {
                 <p>${product.description}</p>
                 <ul class="icons">
                   <li>
-                    <i class="fa-solid fa-arrow-down-wide-short">:${product.quantity}</i>
-                    <span></span><span></span><span></span><span></span>
-                    <i class="fa-sharp fa-solid fa-screwdriver-wrench">:${product.made}</i>
+                    <i class="fa-solid fa-cart-shopping">:ADD CART</i>
+                    
+                    <i class="fa-sharp fa-solid fa-screwdriver-wrench">:
+                      <span></span>${product.made}</i>
                     </li>
                   </ul>
                 <div class="icons">
@@ -86,6 +53,7 @@ export default {
         });
       }),
   },
+   
 };
 </script>
 <style>
@@ -169,6 +137,16 @@ a {
 }
 .landing-head {
   font-family: auto;
+}
+.display-head1 {
+  font-family: auto;
+  color: white !important;
+  text-align: center;
+}
+#span{
+  font-family: auto;
+  color: white !important;
+  text-align: center;
 }
 #inquiry-form {
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),

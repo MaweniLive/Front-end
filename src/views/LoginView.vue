@@ -4,26 +4,16 @@
       <div class="col-lg-6">
         <div class="login-box">
           <h2 class="modal-title">Login</h2>
-          <form>
+          <form onsubmit="Login(event)">
             <div class="user-box">
-              <input
-                type="text"
-                id="fullname"
-                name=""
-                v-model="user.fullname"
-              />
+              <input type="text" id="fullname" name="" v-model="fullname" />
               <label>Email</label>
             </div>
             <div class="user-box">
-              <input
-                type="password"
-                id="password"
-                name=""
-                v-model="user.password"
-              />
+              <input type="password" id="password" name="" v-model="password" />
               <label>Password</label>
             </div>
-            <a data-bs-dismiss="modal" href="#">
+            <a data-bs-dismiss="modal" href="#" @click.capture="Login()" to="/">
               <span></span>
               <span></span>
               <span></span>
@@ -38,36 +28,32 @@
 </template>
 <script>
 export default {
+  props: ["user.user_id"],
+
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+  },
+
   data() {
     return {
-      user: {
-        email: null,
-        password: null,
-      },
+      email: "",
+      password: "",
     };
   },
+
   methods: {
-    login(e) {
-      console.warn(this.user);
-      fetch("https://lj-capstone.herokuapp.com/users", {
-        method: "POST",
-        body: JSON.stringify({
-          email: this.user.email,
-          password: this.user.password,
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-      e.preventDefault();
+    Login() {
+      this.$store.dispatch("Login", {
+        email: this.email,
+        password: this.password,
+      });
     },
   },
 };
 </script>
 <style>
-
 .login-box {
   position: absolute;
   top: 50%;
