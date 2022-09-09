@@ -1,6 +1,7 @@
 <template>
   <nav
     class="navbar fixed-top navbar-expand-lg navbar-dark py-3 d-flex justify-content-between align-items-center header-transparent scroll-behavior: smooth"
+    id="navigation"
   >
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
@@ -17,7 +18,7 @@
         class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
-        data-bs-target="#navbarNavDropdown"
+        data-bs-target="#navigation"
         aria-controls="navbarNavDropdown"
         aria-expanded="false"
         aria-label="Toggle navigation"
@@ -97,5 +98,16 @@ body {
 }
 router-link:hover {
   color: #000;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer .content,
+  .footer {
+    font-size: 14px;
+  }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  .footer {
+    position: unset;
+  }
 }
 </style>

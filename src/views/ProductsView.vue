@@ -15,8 +15,6 @@
 </template>
 <script>
 export default {
-  props: ["program_id"],
-
   methods: {
     getproduct: fetch("https://lj-capstone.herokuapp.com/products")
       .then((res) => res.json())
@@ -36,15 +34,13 @@ export default {
                       <h4>${product.name}</h4>
                 <p>${product.category}</p>
                 <p>${product.description}</p>
-                <ul class="icons">
+                <div class="icons"><ul class="icons">
                   <li>
                     <i class="fa-solid fa-cart-shopping">:ADD CART</i>
-                    
                     <i class="fa-sharp fa-solid fa-screwdriver-wrench">:
-                      <span></span>${product.made}</i>
+                      <span></span></i><${product.made}
                     </li>
                   </ul>
-                <div class="icons">
                   </div>
               </div>
             </div>
@@ -53,7 +49,6 @@ export default {
         });
       }),
   },
-   
 };
 </script>
 <style>

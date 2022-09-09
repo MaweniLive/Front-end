@@ -99,16 +99,26 @@ export default {
                 <td>${user.phone}</td>
                 <td>${user.userRole}</td>
                 <td><button type="button" class="btn btn-primary">Update</button></td>
-                <td><button type="button" class="btn btn-primary">Delete</button></td>
+                <td><button type="button" class="btn btn-primary" @click="deleteProduct(product.product_id)">Delete</button></td>
                 </tr>
          </tbody>
                 `;
         });
       }),
+    deleteProduct(index) {
+      listings.splice(index, 1);
+      localStorage.setItem("listings", JSON.stringify(listings));
+      readData(listings);
+    },
   },
 };
 </script>
 <style>
+table{
+  object-fit: fill;
+  width: fit-content;
+  height: fit-content;
+}
 #admin {
   padding-top: 3%;
   margin: 7%;

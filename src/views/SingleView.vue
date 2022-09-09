@@ -50,7 +50,7 @@
                       @click="addToCart(product)"
                       class="btn btn-lg ms-2 my-1"
                     >
-                      ADD CART
+                      ADD TO CART
                     </button>
                   </div>
                 </div>
